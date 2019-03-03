@@ -1,11 +1,12 @@
 <mat-card>
-    <mat-card-title>
-      Test Card
-    </mat-card-title>
+  <mat-card-title>
+    Test Card
+  </mat-card-title>
   <mat-card-content>
-    <div *ngFor="let field of fields">
-        <app-dynamic-form-field [field]="field" ></app-dynamic-form-field>
-    </div>
-
+    <form class="dynamic-form">
+      <div *ngFor="let field of fields">
+        <app-dynamic-form-field [field]="field"></app-dynamic-form-field>
+      </div>
+    </form>
   </mat-card-content>
 </mat-card>

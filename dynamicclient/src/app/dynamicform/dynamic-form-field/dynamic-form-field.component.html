@@ -1,7 +1,7 @@
 <div [ngSwitch]="field.controlType">
 
-  <mat-form-field *ngSwitchCase="'textbox'">
-    <input matInput placeholder="{{field.label}}">
+  <mat-form-field class="dynamic-text-full-width" *ngSwitchCase="'textbox'">
+    <input matInput placeholder="{{field.label}}" [(ngModel)]="field.value">
   </mat-form-field>
 
   <mat-form-field *ngSwitchCase="'dropdown'"> 
