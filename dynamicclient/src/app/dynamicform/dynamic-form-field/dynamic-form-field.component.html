@@ -1,3 +1,13 @@
-<p>
-  dynamic-form-field works!
-</p>
+<div [ngSwitch]="field.controlType">
+
+  <mat-form-field *ngSwitchCase="textbox">
+    <input matInput placeholder="Input">
+  </mat-form-field>
+
+  <mat-form-field *ngSwitchCase="dropdown"> 
+    <mat-select placeholder="Select">
+      <mat-option value="option">Option</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+</div>
