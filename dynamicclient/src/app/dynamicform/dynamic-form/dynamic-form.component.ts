@@ -10,6 +10,7 @@ import { FormFieldService } from '../services/form-field.service';
 export class DynamicFormComponent implements OnInit {
 
   fields: FieldBase[];
+  initialValues: FieldBase[];
 
   constructor(private formFieldService: FormFieldService) {
    }
@@ -17,12 +18,16 @@ export class DynamicFormComponent implements OnInit {
   ngOnInit() {
     this.formFieldService.getFields().subscribe((data) => {
       this.fields = data;
-      console.log(this.fields);
+      this.initialValues = JSON.parse(JSON.stringify(data));
     });
   }
 
   save() {
     console.log(this.fields);
+  }
+
+  cancel() {
+    this.fields = JSON.parse(JSON.stringify(this.initialValues));
   }
 
 }
