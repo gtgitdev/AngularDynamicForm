@@ -17,6 +17,7 @@ export class DynamicFormComponent implements OnInit {
   ngOnInit() {
     this.formFieldService.getFields().subscribe((data) => {
       this.fields = data;
+      console.log(this.fields);
     });
   }
 

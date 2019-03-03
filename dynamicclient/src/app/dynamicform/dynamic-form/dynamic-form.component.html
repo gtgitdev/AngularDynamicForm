@@ -4,7 +4,7 @@
     </mat-card-title>
   <mat-card-content>
     <div *ngFor="let field of fields">
-      
+        <app-dynamic-form-field [field]="field" ></app-dynamic-form-field>
     </div>
 
   </mat-card-content>

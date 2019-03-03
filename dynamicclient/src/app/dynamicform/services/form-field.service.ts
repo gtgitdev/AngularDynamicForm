@@ -35,6 +35,7 @@ export class FormFieldService {
 
   constructor() {
     this.fieldSubject = new BehaviorSubject<FieldBase[]>(this.ELEMENT_DATA);
+    // console.log(this.fieldSubject);
    }
 
   getFields(): Observable<FieldBase[]> {
