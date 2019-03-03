@@ -21,4 +21,8 @@ export class DynamicFormComponent implements OnInit {
     });
   }
 
+  save() {
+    console.log(this.fields);
+  }
+
 }
