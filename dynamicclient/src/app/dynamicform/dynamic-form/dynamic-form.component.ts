@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FieldBase } from '../models/field-base';
+import { FormFieldService } from '../services/form-field.service';
 
 @Component({
   selector: 'app-dynamic-form',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DynamicFormComponent implements OnInit {
 
-  constructor() { }
+  fields: FieldBase[];
+
+  constructor(private formFieldService: FormFieldService) {
+   }
 
   ngOnInit() {
+    this.formFieldService.getFields().subscribe((data) => {
+      this.fields = data;
+    });
   }
 
 }

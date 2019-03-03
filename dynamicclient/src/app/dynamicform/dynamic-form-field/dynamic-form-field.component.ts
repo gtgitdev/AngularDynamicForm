@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { FieldBase } from '../models/field-base';
 
 @Component({
   selector: 'app-dynamic-form-field',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dynamic-form-field.component.scss']
 })
 export class DynamicFormFieldComponent implements OnInit {
+
+  @Input() field: FieldBase;
 
   constructor() { }
 
