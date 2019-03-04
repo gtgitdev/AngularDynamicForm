@@ -6,6 +6,7 @@ import { DynamicformRoutingModule } from './dynamicform-routing.module';
 import { DynamicFormFieldComponent } from './dynamic-form-field/dynamic-form-field.component';
 import { DynamicFormComponent } from './dynamic-form/dynamic-form.component';
 import { FormsModule } from '@angular/forms';
+import { FormFieldService } from './services/form-field.service';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,9 @@ import { FormsModule } from '@angular/forms';
     DynamicformRoutingModule,
     MaterialModule,
     FormsModule,
+  ],
+  providers: [
+    FormFieldService
   ]
 })
 export class DynamicformModule { }

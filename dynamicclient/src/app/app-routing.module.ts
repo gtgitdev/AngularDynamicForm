@@ -3,7 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {path: 'dynamicform', loadChildren: './dynamicform/dynamicform.module#DynamicformModule'},
-  {path: '**', redirectTo: 'dynamicform'}
+  {path: 'domainmanager', loadChildren: './domainmanager/domainmanager.module#DomainmanagerModule'},
+  {path: '**', redirectTo: 'domainmanager'}
 ];
 
 @NgModule({
