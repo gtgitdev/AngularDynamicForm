@@ -5,8 +5,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ToolbarComponent } from './shared/toolbar/toolbar.component';
-import { HeaderComponent } from './shared/header/header.component';
+import { ToolbarComponent } from './core/toolbar/toolbar.component';
+import { HeaderComponent } from './core/header/header.component';
 import { MaterialModule } from './shared/material.module';
 
 @NgModule({
