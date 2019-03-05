@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { MainContentComponent } from './main-content/main-content.component';
+import { DomainListComponent } from './domain-list/domain-list.component';
 
 const routes: Routes = [
-  {path: '', component: MainContentComponent},
+  {path: 'domains', component: DomainListComponent},
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class DomainmanagerRoutingModule { }
+export class DomainRoutingModule { }

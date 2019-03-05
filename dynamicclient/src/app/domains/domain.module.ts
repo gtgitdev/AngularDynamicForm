@@ -1,22 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { DomainmanagerRoutingModule } from './domainmanager-routing.module';
-import { MainContentComponent } from './main-content/main-content.component';
+import { DomainRoutingModule } from './domain-routing.module';
+import { DomainListComponent } from './domain-list/domain-list.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from '../shared/material.module';
 import { DomainManagerService } from './services/domain-manager.service';
 
 @NgModule({
-  declarations: [MainContentComponent],
+  declarations: [DomainListComponent],
   imports: [
     CommonModule,
-    DomainmanagerRoutingModule,
+    DomainRoutingModule,
     FlexLayoutModule,
     MaterialModule,
+
   ],
   providers: [
     DomainManagerService
   ]
 })
-export class DomainmanagerModule { }
+export class DomainModule { }

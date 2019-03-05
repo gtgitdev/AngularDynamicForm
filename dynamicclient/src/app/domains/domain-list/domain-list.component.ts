@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { DomainManagerService } from '../services/domain-manager.service';
 import { DomainDocument } from '../models/domain-document';
-import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-main-content',
-  templateUrl: './main-content.component.html',
-  styleUrls: ['./main-content.component.scss']
+  templateUrl: './domain-list.component.html',
+  styleUrls: ['./domain-list.component.scss']
 })
-export class MainContentComponent implements OnInit {
+export class DomainListComponent implements OnInit {
 
   constructor(private domainManagerService: DomainManagerService) { }
 
