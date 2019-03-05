@@ -24,12 +24,12 @@ import { HomeComponent } from './home/home.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
     FlexLayoutModule,
     DocumentmanagerModule,
     DomainModule,
+    AppRoutingModule,
 
   ],
   providers: [],
