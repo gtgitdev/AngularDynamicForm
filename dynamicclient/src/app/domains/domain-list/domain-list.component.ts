@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DomainManagerService } from '../services/domain-manager.service';
 import { DomainDocument } from '../models/domain-document';
+import { Router } from '@angular/router';
+import { MessageService } from 'src/app/core/message.service';
 
 @Component({
   selector: 'app-main-content',
@@ -9,7 +11,9 @@ import { DomainDocument } from '../models/domain-document';
 })
 export class DomainListComponent implements OnInit {
 
-  constructor(private domainManagerService: DomainManagerService) { }
+  constructor(private domainManagerService: DomainManagerService, 
+              private router: Router,
+              private messageService: MessageService) { }
 
   domains: DomainDocument[];
 
@@ -18,6 +22,10 @@ export class DomainListComponent implements OnInit {
       this.domains = data;
     });
 
+  }
+  routToDocument(domain: DomainDocument) {
+    this.messageService.serviceData = domain.domainName;
+    this.router.navigate(['documents', domain.domainId]);
   }
 
 }

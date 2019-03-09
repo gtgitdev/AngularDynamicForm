@@ -13,6 +13,7 @@ import { DomainModule } from './domains/domain.module';
 import { PageNotFoundComponent } from './page-not-found.component';
 import { HomeComponent } from './home/home.component';
 import { AdHocDocumentModule } from './ad-hoc-documents/ad-hoc-document.module';
+import { MessageService } from './core/message.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { AdHocDocumentModule } from './ad-hoc-documents/ad-hoc-document.module';
     AppRoutingModule,
 
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

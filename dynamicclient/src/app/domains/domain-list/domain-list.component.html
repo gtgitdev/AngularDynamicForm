@@ -8,7 +8,7 @@
           {{domain.domainDescription}}
         </mat-card-content>
         <mat-card-actions>
-          <button [routerLink]="['/documents', domain.domainId]" routerLinkActive="router-link-active"  mat-raised-button color="primary">Select</button>
+          <button (click)="routToDocument(domain)"   mat-raised-button color="primary">Select</button>
         </mat-card-actions>
         
       </mat-card>
