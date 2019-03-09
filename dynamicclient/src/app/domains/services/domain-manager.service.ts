@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
-import { Observable } from 'rxjs/internal/Observable';
+import { Observable, of } from 'rxjs';
 import { DomainDocument } from '../models/domain-document';
+import { from } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -33,12 +34,12 @@ export class DomainManagerService {
   private fieldSubject: BehaviorSubject<DomainDocument[]>;
 
   constructor() {
-    this.fieldSubject = new BehaviorSubject<DomainDocument[]>(this.ELEMENT_DATA);
+   // this.fieldSubject = new BehaviorSubject<DomainDocument[]>(this.ELEMENT_DATA);
     // console.log(this.fieldSubject);
    }
 
   getDomains(): Observable<DomainDocument[]> {
-    return this.fieldSubject.asObservable();
+    return of(this.ELEMENT_DATA); // this. fieldSubject.asObservable();
   }
 
 }
