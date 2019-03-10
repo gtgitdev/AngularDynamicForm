@@ -3,7 +3,7 @@ import { AdHocDocumentService } from '../ad-hoc-document.service';
 import { Adhocdocument } from '../interfaces/adhocdocument';
 import { ActivatedRoute } from '@angular/router';
 import { MessageService } from 'src/app/core/message.service';
-import { DomainManagerService } from 'src/app/domains/services/domain-manager.service';
+import { DomainManagerService } from 'src/app/domains/services/domain.service';
 import { filter, first } from 'rxjs/operators';
 
 @Component({
@@ -18,9 +18,9 @@ export class AdHocDocumentListComponent implements OnInit {
   documents: Adhocdocument[];
 
   constructor(private adHocService: AdHocDocumentService,
-    private route: ActivatedRoute,
-    private messageService: MessageService,
-    private domainService: DomainManagerService) { }
+              private route: ActivatedRoute,
+              private messageService: MessageService,
+              private domainService: DomainManagerService) { }
 
   ngOnInit() {
 

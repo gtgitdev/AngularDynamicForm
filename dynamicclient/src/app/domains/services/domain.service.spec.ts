@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { DomainManagerService } from './domain-manager.service';
+import { DomainManagerService } from './domain.service';
 
 describe('DomainManagerService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

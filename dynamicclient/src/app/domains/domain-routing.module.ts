@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DomainListComponent } from './domain-list/domain-list.component';
+import { DomainComponent } from './domain/domain.component';
 
 const routes: Routes = [
-  {path: 'domains', component: DomainListComponent},
+  {path: 'domains', component: DomainComponent},
 ];
 
 @NgModule({
