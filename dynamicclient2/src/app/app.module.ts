@@ -2,7 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './shared/material.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AdHocModule } from './adhoc/ad-hoc.module';
@@ -11,19 +12,20 @@ import { AppComponent } from './app.component';
 import { ToolbarComponent } from './core/toolbar/toolbar.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HomeComponent } from './home/home.component';
+import { CardComponent } from './home/app-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarComponent,
     PageNotFoundComponent,
-    HomeComponent
+    HomeComponent,
+    CardComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    FormsModule,
-    ReactiveFormsModule,
+    FlexLayoutModule,
     MaterialModule,
     AdHocModule,
     AppRoutingModule,
@@ -31,4 +33,4 @@ import { HomeComponent } from './home/home.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { } 

@@ -1,15 +1,22 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
-               (closed)="events.push('close!')">
-    Sidenav content
+  <mat-sidenav #sidenav 
+    #sidenav [mode]="isScreenSmall() ? 'over' : 'side'" [opened]="!isScreenSmall()"
+    class="app-sidenav mat-elevation-z10">
+    <mat-toolbar color="accent">Domains</mat-toolbar>
+    <mat-nav-list name="domain" aria-label="domain">
+      <mat-list-item (click)="loadAdHocList(domain)" *ngFor="let domain of domains">
+        <p>
+          {{domain.domainName}}</p>
+        <span fxFlex></span>
+        <span *ngIf="selectedDomain && domain.domainId === selectedDomain.domainId">
+          <mat-icon>chevron_right</mat-icon>
+        </span>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+    </mat-nav-list>
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <p><mat-checkbox [(ngModel)]="opened">sidenav.opened</mat-checkbox></p>
-    <p><button mat-button (click)="sidenav.toggle()">sidenav.toggle()</button></p>
-    <p>Events:</p>
-    <div class="example-events">
-      <div *ngFor="let e of events">{{e}}</div>
-    </div>
+      <app-ad-hoc-list [domain]="selectedDomain"></app-ad-hoc-list>
   </mat-sidenav-content>
 </mat-sidenav-container>
