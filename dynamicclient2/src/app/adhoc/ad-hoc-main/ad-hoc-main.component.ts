@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ad-hoc-main.component.scss']
 })
 export class AdHocMainComponent implements OnInit {
+  
+  events: string[] = [];
+  opened: boolean;
 
   constructor() { }
 
