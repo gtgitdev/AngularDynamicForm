@@ -35,4 +35,4 @@ import { CardComponent } from './home/app-card.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { } 
+export class AppModule { }

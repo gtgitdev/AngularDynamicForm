@@ -1,9 +1,10 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { DomainModel } from '../interfaces/domain-model';
-import { MatPaginator, MatTableDataSource } from '@angular/material';
+import { MatPaginator, MatTableDataSource, MatDialog } from '@angular/material';
 import { AdHocService } from '../services/ad-hoc.service';
 import { AdhocDocumentModel } from '../interfaces/adhoc-document-model';
 import { ActivatedRoute } from '@angular/router';
+import { PageNotFoundComponent } from 'src/app/page-not-found/page-not-found.component';
 
 @Component({
   selector: 'app-ad-hoc-list',
@@ -17,11 +18,12 @@ export class AdHocListComponent implements OnInit {
 
   private currentDomain = 0;
 
-  displayedColumns: string[] = ['documentName', 'documentDescription'];
+  displayedColumns: string[] = ['request', 'documentName', 'documentDescription'];
   dataSource = new MatTableDataSource<AdhocDocumentModel>();
 
   constructor(private adhocService: AdHocService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private dialog: MatDialog) { }
 
   ngOnInit() {
 
@@ -39,6 +41,11 @@ export class AdHocListComponent implements OnInit {
     });
 
   }
+
+  request(element) {
+    this.dialog.open(PageNotFoundComponent);
+  }
+
 }
 
 function compare(a: number | string, b: number | string, isAsc: boolean) {
