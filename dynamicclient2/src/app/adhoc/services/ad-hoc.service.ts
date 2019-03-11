@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AdhocDocumentModel } from '../interfaces/adhoc-document-model';
-import { Observable, of } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import {  tap, catchError } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
 
 
 
@@ -9,39 +11,35 @@ import { Observable, of } from 'rxjs';
 })
 export class AdHocService {
 
-  ELEMENT_DATA: AdhocDocumentModel[] = [
-    {
-      domainId: 1,
-      documentId: 1,
-      documentName: 'Ad Hoc Document One',
-      documentDescription: 'This is the first document description',
+  private adHocDocumentsUrl = 'https://localhost:44350/api/adhocdocuments';
 
-    },
-    {
-      domainId: 1,
-      documentId: 2,
-      documentName: 'Ad Hoc Document Two',
-      documentDescription: 'This is the second document description',
-
-    },
-    {
-      domainId: 1,
-      documentId: 3,
-      documentName: 'Ad Hoc Document Three',
-      documentDescription: 'This is the third document description',
-    },
-    {
-      domainId: 1,
-      documentId: 4,
-      documentName: 'Ad Hoc Document Four',
-      documentDescription: 'This is the fourth document description',
-    },
-
-  ];
-
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   getDocumentsByDomainId(id: number): Observable<AdhocDocumentModel[]> {
-    return of(this.ELEMENT_DATA); // this. fieldSubject.asObservable();
+    return this.http.get<AdhocDocumentModel[]>(`${this.adHocDocumentsUrl}/domain/${id}`)
+      .pipe(
+        // tap(data => console.log(JSON.stringify(data))),
+        catchError(this.handleError)
+      );
+  }
+
+  getDomainById(id: number) {
+    return null;
+  }
+
+  private handleError(err) {
+    // in a real world app, we may send the server to some remote logging infrastructure
+    // instead of just logging it to the console
+    let errorMessage: string;
+    if (err.error instanceof ErrorEvent) {
+      // A client-side or network error occurred. Handle it accordingly.
+      errorMessage = `An error occurred: ${err.error.message}`;
+    } else {
+      // The backend returned an unsuccessful response code.
+      // The response body may contain clues as to what went wrong,
+      errorMessage = `Backend returned code ${err.status}: ${err.body.error}`;
+    }
+    console.error(err);
+    return throwError(errorMessage);
   }
 }

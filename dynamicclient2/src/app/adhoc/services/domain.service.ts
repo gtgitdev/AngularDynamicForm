@@ -1,50 +1,43 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, from } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
 import { DomainModel } from '../interfaces/domain-model';
-import { filter, first } from 'rxjs/operators';
+import { tap, catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DomainService {
 
+  private domainsUrl = 'https://localhost:44350/api/domains';
 
-  ELEMENT_DATA: DomainModel[] = [
-    {
-      domainId: 1,
-      domainName: 'First Domain',
-      domainDescription: 'This is the domain of the first dynamic document repository',
-
-    },
-    {
-      domainId: 2,
-      domainName: 'Second Domain',
-      domainDescription: 'This is the domain of the Second dynamic document repository',
-
-    },
-    {
-      domainId: 3,
-      domainName: 'Third Domain',
-      domainDescription: 'This is the domain of the Third dynamic document repository',
-    },
-    {
-      domainId: 4,
-      domainName: 'Forth Domain',
-      domainDescription: 'This is the domain of the Forth dynamic document repository',
-    },
-
-  ];
-
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   getDomains(): Observable<DomainModel[]> {
-    return of(this.ELEMENT_DATA); // this. fieldSubject.asObservable();
+    return this.http.get<DomainModel[]>(this.domainsUrl)
+      .pipe(
+        // tap(data => console.log(JSON.stringify(data))),
+        catchError(this.handleError)
+      );
+  }
+  getDomainById(id: number) {
+    return null;
   }
 
-  getDomainById(id: number) {
-    return from(this.ELEMENT_DATA).pipe(
-      filter(data => data.domainId === id),
-      first()
-    );
+  private handleError(err) {
+    // in a real world app, we may send the server to some remote logging infrastructure
+    // instead of just logging it to the console
+    let errorMessage: string;
+    if (err.error instanceof ErrorEvent) {
+      // A client-side or network error occurred. Handle it accordingly.
+      errorMessage = `An error occurred: ${err.error.message}`;
+    } else {
+      // The backend returned an unsuccessful response code.
+      // The response body may contain clues as to what went wrong,
+      errorMessage = `Backend returned code ${err.status}: ${err.body.error}`;
+    }
+    console.error(err);
+    return throwError(errorMessage);
   }
+
 }

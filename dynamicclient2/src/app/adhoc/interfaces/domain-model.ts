@@ -1,5 +1,5 @@
 export interface DomainModel {
-    domainId: number;
+    id: number;
     domainName: string;
     domainDescription: string;
 }
