@@ -16,13 +16,12 @@ export class AdHocListComponent implements OnInit {
   @Input() domain: DomainModel;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  
+
   private currentDomain = 0;
 
- 
-  displayedColumns: string[] = ['request', 'documentName', 'documentDescription'];
+
+  displayedColumns: string[] = ['view', 'request', 'documentName', 'documentDescription'];
   dataSource = new MatTableDataSource<AdhocDocumentModel>();
-  
 
   constructor(private adhocService: AdHocService,
               private route: ActivatedRoute,
@@ -31,7 +30,7 @@ export class AdHocListComponent implements OnInit {
   ngOnInit() {
 
     this.route.paramMap.subscribe((params) => {
-      this.currentDomain = +params.get('id');
+      this.currentDomain = +params.get('domainid');
     });
 
     this.loadAdHocDocuments(this.currentDomain);

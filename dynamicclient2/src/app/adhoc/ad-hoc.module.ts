@@ -9,7 +9,8 @@ import { AdHocListComponent } from './ad-hoc-list/ad-hoc-list.component';
 import { AdHocMainComponent } from './ad-hoc-main/ad-hoc-main.component';
 
 const routes: Routes = [
-  {path: 'adhoc/:id', component: AdHocMainComponent},
+  {path: 'adhoc/:domainid/:documentid', component: AdHocMainComponent},
+  {path: 'adhoc/:domainid', component: AdHocMainComponent},
   {path: 'adhoc', redirectTo: 'adhoc/1'},
 ];
 

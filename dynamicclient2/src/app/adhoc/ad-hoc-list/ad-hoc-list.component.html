@@ -19,10 +19,17 @@
           <button mat-icon-button (click)="this.filter.value = ''; applyFilter('')"><mat-icon>clear</mat-icon></button>
     
         <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+            <ng-container matColumnDef="view">
+                <th mat-header-cell *matHeaderCellDef>View</th>
+                <td mat-cell *matCellDef="let element">
+                    <button (click)="request(element)" mat-icon-button ><mat-icon  >pageview</mat-icon></button>  
+                </td>
+              </ng-container>
+
             <ng-container matColumnDef="request">
                 <th mat-header-cell *matHeaderCellDef>New</th>
                 <td mat-cell *matCellDef="let element">
-                    <button (click)="request(element)" mat-icon-button ><mat-icon  >add_circle</mat-icon></button>  
+                    <button (click)="request(element)" mat-icon-button ><mat-icon  >local_printshop</mat-icon></button>  
                 </td>
               </ng-container>
 

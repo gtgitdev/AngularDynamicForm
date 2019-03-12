@@ -27,7 +27,7 @@ export class AdHocMainComponent implements OnInit {
   ngOnInit() {
 
     this.route.paramMap.subscribe((params => {
-      this.currentDomain = +params.get('id');
+      this.currentDomain = +params.get('domainid');
       this.loadAdHocList();
     }));
 
