@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { DomainModel } from '../interfaces/domain-model';
-import { MatPaginator, MatTableDataSource, MatDialog } from '@angular/material';
+import { MatPaginator, MatTableDataSource, MatDialog, MatSort } from '@angular/material';
 import { AdHocService } from '../services/ad-hoc.service';
 import { AdhocDocumentModel } from '../interfaces/adhoc-document-model';
 import { ActivatedRoute } from '@angular/router';
@@ -15,11 +15,14 @@ export class AdHocListComponent implements OnInit {
 
   @Input() domain: DomainModel;
   @ViewChild(MatPaginator) paginator: MatPaginator;
-
+  @ViewChild(MatSort) sort: MatSort;
+  
   private currentDomain = 0;
 
+ 
   displayedColumns: string[] = ['request', 'documentName', 'documentDescription'];
   dataSource = new MatTableDataSource<AdhocDocumentModel>();
+  
 
   constructor(private adhocService: AdHocService,
               private route: ActivatedRoute,
@@ -32,18 +35,23 @@ export class AdHocListComponent implements OnInit {
     });
 
     this.loadAdHocDocuments(this.currentDomain);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   loadAdHocDocuments(id: number) {
     this.adhocService.getDocumentsByDomainId(id).subscribe((data) => {
       this.dataSource.data = data;
-      this.dataSource.paginator = this.paginator;
     });
 
   }
 
   request(element) {
     this.dialog.open(PageNotFoundComponent);
+  }
+
+  applyFilter(filterValue: any) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
 }

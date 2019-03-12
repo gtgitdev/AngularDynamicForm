@@ -2,9 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { DomainService } from '../services/domain.service';
 import { DomainModel } from '../interfaces/domain-model';
 import { AdHocListComponent } from '../ad-hoc-list/ad-hoc-list.component';
-import { Router, ActivatedRoute } from '@angular/router';
-import { Action } from 'rxjs/internal/scheduler/Action';
-import { routerNgProbeToken } from '@angular/router/src/router_module';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
