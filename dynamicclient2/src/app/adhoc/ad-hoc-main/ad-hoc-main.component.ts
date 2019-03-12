@@ -17,7 +17,10 @@ export class AdHocMainComponent implements OnInit {
 
   domains: DomainModel[] = [];
   selectedDomain: DomainModel;
+
   currentDomain = 1;
+  currentDocument = 0;
+  showSideNav = true;
 
   @ViewChild(AdHocListComponent) adhocComponent: AdHocListComponent;
 
@@ -28,6 +31,8 @@ export class AdHocMainComponent implements OnInit {
 
     this.route.paramMap.subscribe((params => {
       this.currentDomain = +params.get('domainid');
+      this.currentDocument = +params.get('documentid');
+      console.log('domain', this.currentDomain, 'document', this.currentDocument);
       this.loadAdHocList();
     }));
 
@@ -42,7 +47,7 @@ export class AdHocMainComponent implements OnInit {
     this.adhocComponent.loadAdHocDocuments(this.currentDomain);
   }
 
-  isScreenSmall(): boolean {
-    return false; // this.mobileQuery.matches;
+  isScreenSmall(): void {
+    this.showSideNav = this.currentDocument === 0 ; // this.mobileQuery.matches;
   }
 }

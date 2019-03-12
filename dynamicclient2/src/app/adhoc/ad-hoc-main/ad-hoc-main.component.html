@@ -1,6 +1,6 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #sidenav 
-    #sidenav [mode]="isScreenSmall() ? 'over' : 'side'" [opened]="!isScreenSmall()"
+    #sidenav [mode]="isScreenSmall() ? 'over' : 'side'" [opened]="showSideNav"
     class="app-sidenav mat-elevation-z10">
     <mat-toolbar color="accent">Domains</mat-toolbar>
     <mat-nav-list name="domain" aria-label="domain">
@@ -17,6 +17,7 @@
   </mat-sidenav>
 
   <mat-sidenav-content>
-      <app-ad-hoc-list #adHocList [domain]="selectedDomain"></app-ad-hoc-list>
+      <app-ad-hoc-list #adHocList [domain]="selectedDomain" ></app-ad-hoc-list>
+   
   </mat-sidenav-content>
 </mat-sidenav-container>
