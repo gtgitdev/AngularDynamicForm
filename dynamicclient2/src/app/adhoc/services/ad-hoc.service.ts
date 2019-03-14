@@ -3,6 +3,8 @@ import { AdhocDocumentModel } from '../interfaces/adhoc-document-model';
 import { Observable, throwError } from 'rxjs';
 import {  tap, catchError } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
+import { DomainModel } from '../interfaces/domain-model';
+import { DomainService } from './domain.service';
 
 
 
@@ -11,9 +13,34 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AdHocService {
 
+//#region service properties
+private currentDomain: DomainModel;
+private currentDocument: AdhocDocumentModel;
+
+  public get CurrentDomain(): DomainModel {
+    return this.currentDomain;
+  }
+
+  public set CurrentDomain(value: DomainModel) {
+    this.currentDomain = value;
+    console.log(this.CurrentDomain);
+  }
+
+  public get CurrentDocument(): AdhocDocumentModel {
+    return this.currentDocument;
+  }
+
+  public set CurrentDocument(value: AdhocDocumentModel) {
+    this.currentDocument = value;
+    console.log(this.CurrentDocument);
+  }
+
+//#endregion
+
   private adHocDocumentsUrl = 'https://localhost:44350/api/adhocdocuments';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+              private domainService: DomainService) { }
 
   getDocumentsByDomainId(id: number): Observable<AdhocDocumentModel[]> {
     return this.http.get<AdhocDocumentModel[]>(`${this.adHocDocumentsUrl}/domain/${id}`)
@@ -23,9 +50,14 @@ export class AdHocService {
       );
   }
 
-  getDomainById(id: number) {
-    return null;
-  }
+getDocumentById(id: number): Observable<AdhocDocumentModel> {
+  return this.http.get<AdhocDocumentModel>(`${this.adHocDocumentsUrl}/${id}`)
+  .pipe(
+    // tap(data => console.log(JSON.stringify(data))),
+    catchError(this.handleError)
+  );
+}
+
 
   private handleError(err) {
     // in a real world app, we may send the server to some remote logging infrastructure

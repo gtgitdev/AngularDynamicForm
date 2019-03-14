@@ -8,6 +8,8 @@ import { FlexModule, FlexLayoutModule } from '@angular/flex-layout';
 import { AdHocListComponent } from './ad-hoc-list/ad-hoc-list.component';
 import { AdHocMainComponent } from './ad-hoc-main/ad-hoc-main.component';
 import { AdhocRequestComponent } from './adhoc-request/adhoc-request.component';
+import { AdHocService } from './services/ad-hoc.service';
+import { DomainService } from './services/domain.service';
 
 const routes: Routes = [
   {
@@ -34,6 +36,10 @@ const routes: Routes = [
     FlexModule,
     FlexLayoutModule,
     RouterModule.forChild(routes),
+  ],
+  providers:[
+    AdHocService,
+    DomainService,
   ]
 })
 export class AdHocModule { }

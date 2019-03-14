@@ -20,8 +20,13 @@ export class DomainService {
         catchError(this.handleError)
       );
   }
+
   getDomainById(id: number) {
-    return null;
+    return this.http.get<DomainModel>(`${this.domainsUrl}/${id}`)
+    .pipe(
+      // tap(data => console.log(JSON.stringify(data))),
+      catchError(this.handleError)
+    );
   }
 
   private handleError(err) {

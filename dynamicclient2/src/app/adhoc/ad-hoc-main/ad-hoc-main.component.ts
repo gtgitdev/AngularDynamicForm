@@ -3,6 +3,7 @@ import { DomainService } from '../services/domain.service';
 import { DomainModel } from '../interfaces/domain-model';
 import { AdHocListComponent } from '../ad-hoc-list/ad-hoc-list.component';
 import { ActivatedRoute } from '@angular/router';
+import { AdHocService } from '../services/ad-hoc.service';
 
 
 @Component({
@@ -16,7 +17,17 @@ export class AdHocMainComponent implements OnInit {
   opened: boolean;
 
   domains: DomainModel[] = [];
-  selectedDomain: DomainModel;
+
+  private selectedDomain: DomainModel;
+
+  public get SelectedDomain(): DomainModel {
+    return this.selectedDomain;
+  }
+
+  public set SelectedDomain(value: DomainModel) {
+    this.selectedDomain = value;
+    this.adhocService.CurrentDomain = value;
+  }
 
   currentDomain = 1;
   currentDocument = 0;
@@ -25,22 +36,26 @@ export class AdHocMainComponent implements OnInit {
   @ViewChild(AdHocListComponent) adhocComponent: AdHocListComponent;
 
   constructor(private domainService: DomainService,
+              private adhocService: AdHocService,
               private route: ActivatedRoute) { }
 
   ngOnInit() {
 
     this.domainService.getDomains().subscribe((data) => {
       this.domains = data;
-      this.selectedDomain = data[0];
+      this.SelectedDomain = data[0];
     });
 
     this.route.paramMap.subscribe((params => {
       this.currentDomain = +params.get('domainid') || 1;
       this.currentDocument = +params.get('documentid');
-      console.log('domain', this.currentDomain, 'document', this.currentDocument);
-      this.loadAdHocList();
+      this.onRouteChange();
     }));
+  }
 
+  onRouteChange() {
+    this.SelectedDomain = this.domains.find(x => x.id === this.currentDomain);
+    this.loadAdHocList();
   }
 
   loadAdHocList(): void {
@@ -49,6 +64,6 @@ export class AdHocMainComponent implements OnInit {
   }
 
   isScreenSmall(): void {
-    this.showSideNav = this.currentDocument === 0 ; // this.mobileQuery.matches;
+    this.showSideNav = this.currentDocument === 0; // this.mobileQuery.matches;
   }
 }
