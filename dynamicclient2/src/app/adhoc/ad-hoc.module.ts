@@ -10,9 +10,14 @@ import { AdHocMainComponent } from './ad-hoc-main/ad-hoc-main.component';
 import { AdhocRequestComponent } from './adhoc-request/adhoc-request.component';
 
 const routes: Routes = [
-  {path: 'adhoc/:domainid/:documentid', component: AdhocRequestComponent},
-  {path: 'adhoc/:domainid', component: AdHocMainComponent},
-  {path: 'adhoc', redirectTo: 'adhoc/1'},
+  {
+    path: 'adhoc',
+    children: [
+      { path: '', component: AdHocMainComponent},
+      { path: ':domainid', component: AdHocMainComponent },
+      { path: ':domainid/:documentid', component: AdhocRequestComponent },
+    ]
+  },
 ];
 
 @NgModule({

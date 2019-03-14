@@ -29,17 +29,18 @@ export class AdHocMainComponent implements OnInit {
 
   ngOnInit() {
 
+    this.domainService.getDomains().subscribe((data) => {
+      this.domains = data;
+      this.selectedDomain = data[0];
+    });
+
     this.route.paramMap.subscribe((params => {
-      this.currentDomain = +params.get('domainid');
+      this.currentDomain = +params.get('domainid') || 1;
       this.currentDocument = +params.get('documentid');
       console.log('domain', this.currentDomain, 'document', this.currentDocument);
       this.loadAdHocList();
     }));
 
-    this.domainService.getDomains().subscribe((data) => {
-      this.domains = data;
-      this.selectedDomain = data[0];
-    });
   }
 
   loadAdHocList(): void {
