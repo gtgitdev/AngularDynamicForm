@@ -10,6 +10,8 @@ import { AdHocMainComponent } from './ad-hoc-main/ad-hoc-main.component';
 import { AdhocRequestComponent } from './adhoc-request/adhoc-request.component';
 import { AdHocService } from './services/ad-hoc.service';
 import { DomainService } from './services/domain.service';
+import { DynamicFormComponent } from './dynamic/dynamic-form/dynamic-form.component';
+import { DynamicFormFieldComponent } from './dynamic/dynamic-form-field/dynamic-form-field.component';
 
 const routes: Routes = [
   {
@@ -26,7 +28,9 @@ const routes: Routes = [
   declarations: [
     AdHocListComponent,
     AdHocMainComponent,
-    AdhocRequestComponent
+    AdhocRequestComponent,
+    DynamicFormComponent,
+    DynamicFormFieldComponent
   ],
   imports: [
     CommonModule,

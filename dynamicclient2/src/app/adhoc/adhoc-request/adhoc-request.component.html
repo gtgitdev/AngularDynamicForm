@@ -26,20 +26,21 @@
     </mat-card>
   </mat-grid-tile>
 </mat-grid-list> -->
-
-<div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="30px" fxLayoutAlign="space-around center">
-  <div fxFlex="0 1 calc(50% - 25px)" fxFlex.lt-sm="100%" >
-    <mat-card style="width:100%; background-color: tomato;">
-      <mat-card-title>
-        {{adHocDocument?.documentName}} Request
-      </mat-card-title>
-    </mat-card>
-  </div>
-  <div fxFlex="0 1 calc(50% - 25px)" fxFlex.lt-sm="100%">
-    <mat-card style="width:100%; background-color: tomato;">
-      <mat-card-title>
-        Prior Requests
-      </mat-card-title>
-    </mat-card>
+<div class="wrapper">
+  <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="30px" fxLayoutAlign="space-around center">
+    <div fxFlex="1 1 calc(50% - 25px)" fxFlex.lt-sm="100%">
+      <mat-card style=" background-color: tomato;">
+        <mat-card-title>
+          {{adHocDocument?.documentName}} Request
+        </mat-card-title>
+      </mat-card>
+    </div>
+    <div fxFlex="1 1 calc(50% - 25px)" fxFlex.lt-sm="100%">
+      <mat-card style="background-color: tomato;">
+        <mat-card-title>
+          Prior Requests
+        </mat-card-title>
+      </mat-card>
+    </div>
   </div>
 </div>
