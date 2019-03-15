@@ -26,6 +26,9 @@ namespace CoreApi.Data
                 AdHocDocumentModelSeedData.GetData()
             );
 
+            modelBuilder.Entity<DynamicFieldModel>().HasData(
+                DynamicFieldModelSeedData.GetData()
+            );
         }
     }
 }
