@@ -28,6 +28,7 @@ export class AdhocRequestComponent implements OnInit {
     this.route.paramMap.subscribe((params => {
       this.currentDomain = +params.get('domainid') || 1;
       this.currentDocument = +params.get('documentid');
+      console.log(this.currentDocument, this.currentDomain);
       this.onRouteChange();
     }));
 

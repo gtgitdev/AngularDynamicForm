@@ -29,7 +29,7 @@
             <ng-container matColumnDef="request">
                 <th mat-header-cell *matHeaderCellDef>New</th>
                 <td mat-cell *matCellDef="let element">
-                    <button [routerLink]="['/adhoc/', element.domainId, element.id]" routerLinkActive="router-link-active"  mat-icon-button ><mat-icon  >local_printshop</mat-icon></button>  
+                    <button [routerLink]="['/adhoc/', element.domainId, element.adHocDocumentId]" routerLinkActive="router-link-active"  mat-icon-button ><mat-icon  >local_printshop</mat-icon></button>  
                 </td>
               </ng-container>
 

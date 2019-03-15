@@ -4,11 +4,11 @@
     class="app-sidenav mat-elevation-z10">
     <mat-toolbar color="accent">Domains</mat-toolbar>
     <mat-nav-list name="domain" aria-label="domain">
-      <mat-list-item [routerLink]="['/adhoc', domain.id]" *ngFor="let domain of domains">
+      <mat-list-item [routerLink]="['/adhoc', domain.domainId]" *ngFor="let domain of domains">
         <p>
           {{domain.domainName}}</p>
         <span fxFlex></span>
-        <span *ngIf="selectedDomain && domain.id === currentDomain"> 
+        <span *ngIf="selectedDomain && domain.domainId === currentDomain"> 
           <mat-icon>chevron_right</mat-icon>
         </span>
         <mat-divider></mat-divider>

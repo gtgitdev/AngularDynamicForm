@@ -54,12 +54,12 @@ export class AdHocMainComponent implements OnInit {
   }
 
   onRouteChange() {
-    this.SelectedDomain = this.domains.find(x => x.id === this.currentDomain);
+    this.SelectedDomain = this.domains.find(x => x.domainId === this.currentDomain);
     this.loadAdHocList();
   }
 
   loadAdHocList(): void {
-    this.adhocComponent.domain = this.domains.find(x => x.id === this.currentDomain);
+    this.adhocComponent.domain = this.domains.find(x => x.domainId === this.currentDomain);
     this.adhocComponent.loadAdHocDocuments(this.currentDomain);
   }
 

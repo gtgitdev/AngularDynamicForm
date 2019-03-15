@@ -1,5 +1,5 @@
 export interface AdhocDocumentModel {
-    id: number;
+    adhocdocumentId: number;
     documentId: number;
     documentName: string;
     documentDescription: string;

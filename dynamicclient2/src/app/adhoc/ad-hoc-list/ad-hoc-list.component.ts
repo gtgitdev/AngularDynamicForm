@@ -41,6 +41,7 @@ export class AdHocListComponent implements OnInit {
   loadAdHocDocuments(id: number) {
     this.adhocService.getDocumentsByDomainId(id).subscribe((data) => {
       this.dataSource.data = data;
+      console.log(data);
     });
 
   }
