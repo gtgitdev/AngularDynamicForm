@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { DynamicformService } from './dynamicform.service';
+import { DynamicFieldService } from './dynamic-field.service';
 
 describe('DynamicformService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: DynamicformService = TestBed.get(DynamicformService);
+    const service: DynamicFieldService = TestBed.get(DynamicFieldService);
     expect(service).toBeTruthy();
   });
 });

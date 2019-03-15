@@ -12,6 +12,7 @@ import { AdHocService } from './services/ad-hoc.service';
 import { DomainService } from './services/domain.service';
 import { DynamicFormComponent } from './dynamic/dynamic-form/dynamic-form.component';
 import { DynamicFormFieldComponent } from './dynamic/dynamic-form-field/dynamic-form-field.component';
+import { DynamicFieldService } from './services/dynamic-field.service';
 
 const routes: Routes = [
   {
@@ -41,9 +42,10 @@ const routes: Routes = [
     FlexLayoutModule,
     RouterModule.forChild(routes),
   ],
-  providers:[
+  providers: [
     AdHocService,
     DomainService,
+    DynamicFieldService,
   ]
 })
 export class AdHocModule { }

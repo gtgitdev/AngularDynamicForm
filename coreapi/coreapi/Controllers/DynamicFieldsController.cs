@@ -21,14 +21,14 @@ namespace coreapi.Controllers
             this.context = context;
         }
 
-        // GET: api/DynamicForm
+        // GET: api/DynamicFields
         [HttpGet]
         public async Task<ActionResult<IEnumerable<DynamicFieldModel>>> GetDynamicFields()
         {
             return await context.DynamicFields.ToListAsync();
         }
 
-        // GET: api/DynamicForm
+        // GET: api/DynamicFields
         [HttpGet("document/{id}")]
         public async Task<ActionResult<IEnumerable<DynamicFieldModel>>> GetDynamicFieldsByDocument(int id)
         {
@@ -43,7 +43,7 @@ namespace coreapi.Controllers
         }
 
 
-        // GET: api/DynamicForm/5
+        // GET: api/DynamicFields/5
         [HttpGet("{id}")]
         public async Task<ActionResult<DynamicFieldModel>> GetDynamicFieldModel(int id)
         {
@@ -57,7 +57,7 @@ namespace coreapi.Controllers
             return dynamicFieldModel;
         }
 
-        // PUT: api/DynamicForm/5
+        // PUT: api/DynamicFields/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutDynamicFieldModel(int id, DynamicFieldModel dynamicFieldModel)
         {
@@ -87,7 +87,7 @@ namespace coreapi.Controllers
             return NoContent();
         }
 
-        // POST: api/DynamicForm
+        // POST: api/DynamicFields
         [HttpPost]
         public async Task<ActionResult<DynamicFieldModel>> PostDynamicFieldModel(DynamicFieldModel dynamicFieldModel)
         {
@@ -97,7 +97,7 @@ namespace coreapi.Controllers
             return CreatedAtAction("GetDynamicFieldModel", new { id = dynamicFieldModel.DynamicFieldId }, dynamicFieldModel);
         }
 
-        // DELETE: api/DynamicForm/5
+        // DELETE: api/DynamicFields/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<DynamicFieldModel>> DeleteDynamicFieldModel(int id)
         {
