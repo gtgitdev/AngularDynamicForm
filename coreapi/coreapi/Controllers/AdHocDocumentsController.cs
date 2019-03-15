@@ -62,7 +62,7 @@ namespace coreapi.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutAdHocDocumentModel(int id, AdHocDocumentModel adHocDocumentModel)
         {
-            if (id != adHocDocumentModel.Id)
+            if (id != adHocDocumentModel.AdHocDocumentId)
             {
                 return BadRequest();
             }
@@ -95,7 +95,7 @@ namespace coreapi.Controllers
             context.AdHocDocuments.Add(adHocDocumentModel);
             await context.SaveChangesAsync();
 
-            return CreatedAtAction("GetAdHocDocumentModel", new { id = adHocDocumentModel.Id }, adHocDocumentModel);
+            return CreatedAtAction("GetAdHocDocumentModel", new { id = adHocDocumentModel.AdHocDocumentId }, adHocDocumentModel);
         }
 
         // DELETE: api/AdHocDocuments/5
@@ -116,7 +116,7 @@ namespace coreapi.Controllers
 
         private bool AdHocDocumentModelExists(int id)
         {
-            return context.AdHocDocuments.Any(e => e.Id == id);
+            return context.AdHocDocuments.Any(e => e.AdHocDocumentId == id);
         }
     }
 }

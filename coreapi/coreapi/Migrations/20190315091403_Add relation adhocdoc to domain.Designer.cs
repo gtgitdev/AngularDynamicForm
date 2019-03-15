@@ -3,14 +3,16 @@ using CoreApi.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CoreApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190315091403_Add relation adhocdoc to domain")]
+    partial class Addrelationadhocdoctodomain
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -154,9 +156,9 @@ namespace CoreApi.Migrations
 
                     b.Property<string>("FieldLabel");
 
-                    b.Property<int>("FieldOrder");
-
                     b.Property<int>("GroupSize");
+
+                    b.Property<int>("Order");
 
                     b.Property<bool>("Required");
 

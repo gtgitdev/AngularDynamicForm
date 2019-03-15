@@ -54,7 +54,7 @@ namespace CoreApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (id != domainModel.Id)
+            if (id != domainModel.DomainId)
             {
                 return BadRequest();
             }
@@ -92,7 +92,7 @@ namespace CoreApi.Controllers
             context.Domains.Add(domainModel);
             await context.SaveChangesAsync();
 
-            return CreatedAtAction("GetDomainModel", new { id = domainModel.Id }, domainModel);
+            return CreatedAtAction("GetDomainModel", new { id = domainModel.DomainId }, domainModel);
         }
 
         // DELETE: api/Domain/5
@@ -118,7 +118,7 @@ namespace CoreApi.Controllers
 
         private bool DomainModelExists(int id)
         {
-            return context.Domains.Any(e => e.Id == id);
+            return context.Domains.Any(e => e.DomainId == id);
         }
     }
 }

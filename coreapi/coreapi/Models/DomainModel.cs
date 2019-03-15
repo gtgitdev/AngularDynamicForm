@@ -9,9 +9,11 @@ namespace CoreApi.Models
     public class DomainModel
     {
         [Key]
-        public int Id { get; set; }
+        public int DomainId { get; set; }
         public string DomainName { get; set; }
         public string DomainDescription { get; set; }
+
+        public List<AdHocDocumentModel> AdHocDocuments { get; set; }
 
     }
 }

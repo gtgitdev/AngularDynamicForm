@@ -14,6 +14,7 @@ namespace CoreApi.Data
 
         public DbSet<AdHocDocumentModel> AdHocDocuments { get; set; }
         public DbSet<DomainModel> Domains { get; set; }
+        public DbSet<DynamicFieldModel> DynamicFields { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

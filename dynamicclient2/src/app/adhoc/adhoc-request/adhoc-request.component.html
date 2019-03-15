@@ -4,38 +4,19 @@
   <mat-divider></mat-divider>
 </mat-grid-list>
 
-<!-- <mat-grid-list gutterSize="5px;" [cols]="breakpoint" class="heading" (window:resize)="onResize($event)">
-  <mat-grid-tile>
-    <mat-grid-tile-header>
-      {{adHocDocument?.documentName}} Request
-    </mat-grid-tile-header>
-    <mat-card style="width:100%;">
-      1
-    </mat-card>
-  </mat-grid-tile>
-  <mat-grid-tile>
-    <mat-grid-tile-header>
-      Prior Requests
-    </mat-grid-tile-header>
-    <mat-card style="width:100%;">
-      2
-      <p>
-        <button [routerLink]="['/adhoc/1']" routerLinkActive="router-link-active">Back</button>
-        adhoc-request works!
-      </p>
-    </mat-card>
-  </mat-grid-tile>
-</mat-grid-list> -->
 <div class="wrapper">
-  <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="30px" fxLayoutAlign="space-around center">
-    <div fxFlex="1 1 calc(50% - 25px)" fxFlex.lt-sm="100%">
+  <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="30px" fxLayoutAlign="space-around start">
+    <div fxFlex="0 1 calc(50% - 25px)" fxFlex.lt-sm="100%">
       <mat-card style=" background-color: tomato;">
         <mat-card-title>
           {{adHocDocument?.documentName}} Request
         </mat-card-title>
+        <mat-card-content>
+            <app-dynamic-form></app-dynamic-form>
+        </mat-card-content>
       </mat-card>
     </div>
-    <div fxFlex="1 1 calc(50% - 25px)" fxFlex.lt-sm="100%">
+    <div fxFlex="0 1 calc(50% - 25px)" fxFlex.lt-sm="100%">
       <mat-card style="background-color: tomato;">
         <mat-card-title>
           Prior Requests

@@ -3,14 +3,16 @@ using CoreApi.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CoreApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190315085022_Dynamic field model with relations")]
+    partial class Dynamicfieldmodelwithrelations
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,8 +33,6 @@ namespace CoreApi.Migrations
                     b.Property<int>("DomainId");
 
                     b.HasKey("AdHocDocumentId");
-
-                    b.HasIndex("DomainId");
 
                     b.ToTable("AdHocDocuments");
 
@@ -154,9 +154,9 @@ namespace CoreApi.Migrations
 
                     b.Property<string>("FieldLabel");
 
-                    b.Property<int>("FieldOrder");
-
                     b.Property<int>("GroupSize");
+
+                    b.Property<int>("Order");
 
                     b.Property<bool>("Required");
 
@@ -167,14 +167,6 @@ namespace CoreApi.Migrations
                     b.HasIndex("AdHocDocumentId");
 
                     b.ToTable("DynamicFields");
-                });
-
-            modelBuilder.Entity("CoreApi.Models.AdHocDocumentModel", b =>
-                {
-                    b.HasOne("CoreApi.Models.DomainModel", "Domain")
-                        .WithMany("AdHocDocuments")
-                        .HasForeignKey("DomainId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("CoreApi.Models.DynamicFieldModel", b =>

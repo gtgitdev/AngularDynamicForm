@@ -25,8 +25,6 @@ export class AdhocRequestComponent implements OnInit {
 
   ngOnInit() {
 
-    this.breakpoint = (window.innerWidth <= 400) ? 1 : 2;
-
     this.route.paramMap.subscribe((params => {
       this.currentDomain = +params.get('domainid') || 1;
       this.currentDocument = +params.get('documentid');
@@ -50,7 +48,4 @@ export class AdhocRequestComponent implements OnInit {
 
   }
 
-  onResize(event) {
-    this.breakpoint = (event.target.innerWidth <= 400) ? 1 : 2;
-  }
 }
